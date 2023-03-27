@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add a new author
+{% endblock %}
+
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <!--Django Model Form-->
+    <h2 class="my-4">Add a new author</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ author_form|crispy}}
+        <button class="btn btn-info my-4" type="submit">Submit</button>
+    </form>
+</div>
+
+
+{% endblock %}

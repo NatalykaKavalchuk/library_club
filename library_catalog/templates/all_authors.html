@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}
+All authors
+{% endblock %}
+
+
+{% block content %}
+
+<div>
+    <div class="container p-4">
+        <div class="row">
+            <h1>Authors List</h1>
+            <hr>
+            {% if all_authors %}
+            <table class="table table-striped table-bordered">
+                <thead class="thead-light">
+                <tr>
+                    <td>ID</td>
+                    <td>Author</td>
+                    <td>Description</td>
+                    <td>Products</td>
+                    <td>Action</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for author in all_authors %}
+                <tr>
+                    <td>{{ author.id }}</td>
+                    <td>{{ author }}</td>
+                    <td style="width: 55%">"{{ author.bio|truncatewords:30 }}</td>
+
+                    <td>
+                        {% for book in author.books.all %}
+                        <a href="/books/{{ book.slug }}">{{ book }}</a>
+                        <br>
+                        {% endfor %}
+                    </td>
+
+                    <td><a href="{{ author.slug }}">View</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% else %}
+        <p>There are no authors available.</p>
+        {% endif %}
+
+        <a href="add/author" class="btn btn-info btn-lg"><span>Add author</span></a>
+    </div>
+</div>
+
+
+<!--Pagination-->
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        {% if all_authors.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{  all_authors.previous_page_number }}">Previous</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Previous</a>
+        </li>
+        {% endif %}
+
+        {% if all_authors.number|add:'-4' > 1 %}
+        <li class="page-item"><a class="page-link" href="?page={{  all_authors.number|add:'-5' }}">&hellip;</a></li>
+        {% endif %}
+
+        {% for i in all_authors.paginator.page_range %}
+        {% if all_authors.number == i %}
+        <li class="page-item active" aria-current="page">
+              <span class="page-link">
+                {{ i }}
+              </span>
+        </li>
+        {% elif i > all_authors.number|add:'-5' and i < all_authors.number|add:'5' %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if all_authors.paginator.num_pages > all_authors.number|add:'4' %}
+        <li class="page-item"><a class="page-link" href="?page={{  all_authors.number|add:'5' }}">&hellip;</a></li>
+        {% endif %}
+
+        {% if all_authors.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{  all_authors.next_page_number }}">Next</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Next</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+<!--end of Pagination-->
+
+
+{% endblock %}

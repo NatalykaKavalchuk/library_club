@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+Detail about book
+{% endblock %}
+
+{% block content %}
+
+
+<div>
+    <div class="container p-4">
+
+        <div class="row">
+            <div class="col-md-4">
+                <img class="bookImage" width="250" src="{{ author.photo.url }}" alt=""> <br>
+            </div>
+
+            <div class="col-md-8">
+                <h5><strong>Author:</strong> {{ author }}</h5>
+                <h6><strong>BIO:</strong></h6>
+                <p> {{ author.bio | linebreaks }}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
