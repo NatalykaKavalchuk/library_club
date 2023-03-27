@@ -22,8 +22,8 @@ Detail about book
             <br>
 
             <div class="col-md-8">
-                <h3><strong>{{ book }}</strong></h3>
-                <h5><strong>Author:</strong></h5>
+                <h3><strong>Name book: {{ book }}</strong></h3>
+                <h5><strong>Authors:</strong></h5>
                 <ul>
                     {% for author in assoc_authors %}
                     <a href="/authors/{{ author.slug }}">{{ author }}</a>
@@ -31,16 +31,18 @@ Detail about book
                     {% endfor %}
                 </ul>
 
+                {% if non_assoc_authors %}
                 <form action='/books/{{ book.slug }}/add_author' method='post'>
                     {% csrf_token %}
                     <select name="author_slug">
                         {% for author in non_assoc_authors %}
-                        <option value="{{ author.slug }}">{{ author.first_name }} {{ author.last_name }}
+                        <option value="{{ author.slug }}">{{ author.first_name|title }} {{ author.last_name|title }}
                         </option>
                         {% endfor %}
                     </select>
                     <input type="submit" value="Add">
                 </form>
+                {% endif %}
 
                 <h6><strong>Desciption:</strong></h6>
                 <p> {{ book.description }}</p>

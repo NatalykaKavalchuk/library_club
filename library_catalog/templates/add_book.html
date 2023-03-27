@@ -17,21 +17,6 @@ Add a new book
         {{ book_form|crispy}}
         <button class="btn btn-info my-4" type="submit">Submit</button>
     </form>
-    <!--Django Model-->
-    <h2 class="my-4">Books</h2>
-    <div class="row">
-        {% for book in all_books %}
-        <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
-            <div class="card h-100 p-4">
-                <img src="{{ book.poster.url }}" class="card-img-top" alt="{{ book.title}}">
-                <h4>{{book.title}}</h4>
-                <p>{{book.description|truncatewords:30}}</p>
-            </div>
-        </div>
-        {% empty %}
-        <p>No books added.</p>
-        {% endfor %}
-    </div>
 </div>
 
 
