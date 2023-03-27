@@ -8,7 +8,7 @@ The main features that have currently been implemented are:
 
 1. There are models for books and authors.
 2. Users can view list and detail information for books and authors.
-3. Users can add authors and books. it is possible to add an author to an existing book model
+3. Users can add authors and books. It is possible to add an author to an existing book model.
 
 
 
