@@ -7,31 +7,58 @@
     font-size: 35px;
 }
 
+
+
+
+
+
+
+
+
+
 </style>
 
 
 <nav class="navbar navbar-expand-sm bg-info navbar-dark">
-    <!-- Brand/logo -->
-    <a class="navbar-brand" font-family="Lobster" href="#">Library Club</a>
+    <div class="container-fluid">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="#">Library Club</a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarCollapse" aria-controls="navbarCollapse"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span></button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span></button>
 
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
 
-        <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'library_catalog:home_page' %}">HOME</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'library_catalog:books' %}">BOOKS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'library_catalog:authors' %}">AUTHORS</a>
-            </li>
-        </ul>
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'library_catalog:home_page' %}"><i
+                            class="bi bi-house-heart-fill"></i> HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'library_catalog:books' %}"><i class="bi bi-book-fill"></i>
+                        BOOKS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'library_catalog:authors' %}"><i class="bi bi-people-fill"></i>
+                        AUTHORS</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i
+                            class="bi bi-file-person-fill"></i>CONTACT</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="https://linkedin.com/in/natallia-kavalchuk" target="_blank">
+                            <i class="bi bi-linkedin"></i> Linkedin</a></li>
+                        <li><a class="dropdown-item" href="https://github.com/NatalykaKavalchuk" target="_blank"><i
+                                class="bi bi-github"></i> GitHub</a></li>
+                        <li><a class="dropdown-item" href="#">A third link</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
     </div>
 </nav>

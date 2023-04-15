@@ -10,6 +10,10 @@ def home_page(request):
     return render(request, 'home_page.html')
 
 
+def test(request):
+    return render(request, 'test.html')
+
+
 # ___BOOK___
 
 def list_books(request):
@@ -31,6 +35,12 @@ def book_details(request, slug):
         "non_assoc_authors": non_assoc_authors
     }
     return render(request, 'book_details.html', data)
+
+
+def delete_book(request, slug):
+    book = Book.objects.get(slug=slug)
+    book.delete()
+    return redirect('library_catalog:books')
 
 
 def add_author_to_book(request, slug):

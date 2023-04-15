@@ -5,6 +5,8 @@ All books
 {% endblock %}
 
 
+
+
 {% block content %}
 
 <div>
@@ -35,7 +37,11 @@ All books
                         {% endfor %}
                     </td>
                     <td style="width: 55%">{{ book.description|truncatewords:30 }}</td>
-                    <td style="width: 10%"><a href="{{ book.slug }}">View</a></td>
+                    <td style="width: 10%">
+                        <a href="{{ book.slug }}">View</a>
+                        <br>
+                        <a href="delete/{{ book.slug }}" style="color:red;">Delete</a>
+                    </td>
                 </tr>
                 {% endfor %}
                 </tbody>
