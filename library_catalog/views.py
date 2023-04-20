@@ -14,6 +14,17 @@ def test(request):
     return render(request, 'test.html')
 
 
+def search(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        search_obj = Book.objects.filter(title__contains=searched)
+
+        return render(request, 'search_authors.html', {'searched': searched, 'search_obj': search_obj})
+    else:
+        return render(request, 'search_authors.html')
+
+
+
 # ___BOOK___
 
 def list_books(request):

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+Search Page
+{% endblock %}
+
+
+{% block content %}
+<center>
+    {% if searched %}
+    <h1>You Searched For {{searched}} </h1>
+    <br>
+    {% for obj in search_obj %}
+
+    <a href="/books/{{ obj.slug }}">{{ obj }}</a>
+    </br>
+    {% endfor %}
+
+
+    {% else %}
+    <h1>OOOOOPS......</h1>
+    {% endif %}
+
+</center>
+
+
+{% endblock %}
