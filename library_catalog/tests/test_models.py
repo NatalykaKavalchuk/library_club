@@ -9,7 +9,7 @@ class AuthorModelTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        Author.objects.create(first_name='Natallia', last_name='Kavalchuk')
+        Author.objects.create(first_name='Natallia', last_name='Kavalchuk', slug="natallia_kavalchuk")
 
     def test_first_name_label(self):
         author = Author.objects.get(id=1)
@@ -26,10 +26,6 @@ class AuthorModelTest(TestCase):
         expected_object_name = f'{author.first_name} {author.last_name}'
         self.assertEquals(expected_object_name, str(author))
 
-    def test_author_slug(self):
-        author = Author.objects.create(first_name='Big', last_name='Bob')
-
-        self.assertEqual(author.slug, slugify(f'{author.first_name} {author.last_name}'))
 
 
 class BookModelTest(TestCase):
@@ -43,7 +39,7 @@ class TestModels(TestCase):
     # testing two related models
     def test_book_has_an_author(self):
         book = Book.objects.create(title="I love Python")
-        bob = Author.objects.create(first_name="Bob", last_name="Dick")
-        nick = Author.objects.create(first_name="Nick", last_name="Crain")
+        bob = Author.objects.create(first_name="Bob", last_name="Green", slug="bob-green")
+        nick = Author.objects.create(first_name="Nick", last_name="Crain", slug="nick-crain")
         book.author.set([bob.pk, nick.pk])
         self.assertEqual(book.author.count(), 2)

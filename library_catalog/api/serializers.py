@@ -9,7 +9,6 @@ class BookSerializer(serializers.ModelSerializer):
         model = Book
         fields = ['title', 'description', 'author']
 
-
     def create(self, validated_data):
         author = validated_data["author"]
         slug = slugify(validated_data["title"])
