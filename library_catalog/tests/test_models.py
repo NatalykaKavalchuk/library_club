@@ -1,5 +1,4 @@
 from django.test import TestCase
-from transliterate import slugify
 from model_bakery import baker
 
 from library_catalog.models import Author, Book
