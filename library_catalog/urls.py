@@ -1,4 +1,5 @@
 from django.urls import path
+
 import library_catalog.views
 
 app_name = 'library_catalog'
@@ -19,6 +20,5 @@ urlpatterns = [
     path('authors/', library_catalog.views.list_authors, name='authors'),
     path('authors/<slug:slug>', library_catalog.views.author_details, name='author_details'),
     path('authors/add/author', library_catalog.views.add_author, name='add_author'),
-
 
 ]

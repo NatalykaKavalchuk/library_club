@@ -1,7 +1,8 @@
 from django.test import TestCase
-from django.utils.text import slugify
+from transliterate import slugify
+from model_bakery import baker
 
-from library_catalog.models import Author
+from library_catalog.models import Author, Book
 
 
 class AuthorModelTest(TestCase):
@@ -31,3 +32,18 @@ class AuthorModelTest(TestCase):
         self.assertEqual(author.slug, slugify(f'{author.first_name} {author.last_name}'))
 
 
+class BookModelTest(TestCase):
+    # the test allows you to fill in the fields of the model 'Book' using the library model_bakery
+    def test_book_model(self):
+        book = baker.make(Book, title="I love Python")
+        self.assertEqual(str(book), "I love Python")
+
+
+class TestModels(TestCase):
+    # testing two related models
+    def test_book_has_an_author(self):
+        book = Book.objects.create(title="I love Python")
+        bob = Author.objects.create(first_name="Bob", last_name="Dick")
+        nick = Author.objects.create(first_name="Nick", last_name="Crain")
+        book.author.set([bob.pk, nick.pk])
+        self.assertEqual(book.author.count(), 2)

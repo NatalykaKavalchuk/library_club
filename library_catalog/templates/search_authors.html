@@ -10,9 +10,18 @@ Search Page
     {% if searched %}
     <h1>You Searched For {{searched}} </h1>
     <br>
+
     {% for obj in search_obj %}
 
-    <a href="/books/{{ obj.slug }}">{{ obj }}</a>
+    <a href="/books/{{ obj.slug }}">{{ obj|title }}</a>
+    </br>
+    {% endfor %}
+    <hr>
+
+    {% for obj in search_author %}
+    <a href="/authors/{{ obj.slug }}">{{ obj|title }}</a>
+
+<!--    <a href="/books/{{ obj.slug }}">{{ obj|title }}</a>-->
     </br>
     {% endfor %}
 

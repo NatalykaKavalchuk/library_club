@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import render, redirect
 
 from library_catalog.forms import BookForm, AuthorForm
@@ -17,19 +18,20 @@ def test(request):
 def search(request):
     if request.method == "POST":
         searched = request.POST['searched']
-        search_obj = Book.objects.filter(title__contains=searched)
+        search_obj = Book.objects.filter(title__icontains=searched)
+        search_author = Author.objects.filter(Q(first_name__icontains=searched) | Q(last_name__icontains=searched))
 
-        return render(request, 'search_authors.html', {'searched': searched, 'search_obj': search_obj})
+        return render(request, 'search_authors.html',
+                      {'searched': searched, 'search_obj': search_obj, 'search_author': search_author})
     else:
         return render(request, 'search_authors.html')
-
 
 
 # ___BOOK___
 
 def list_books(request):
     all_books = Book.objects.all()
-    paginator = Paginator(all_books, 5)
+    paginator = Paginator(all_books, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -70,6 +72,7 @@ def add_book(request):
 
             book_form.save()
             messages.success(request, 'Your book was successfully added!')
+            return redirect('library_catalog:books')
         else:
             messages.error(request, 'Error saving form')
 
@@ -87,8 +90,6 @@ def list_authors(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    print(all_authors)
-
     return render(request, 'all_authors.html', {'all_authors': page_obj})
 
 
@@ -105,6 +106,7 @@ def add_author(request):
 
             author_form.save()
             messages.success(request, 'Author was successfully added!')
+            return redirect('library_catalog:authors')
         else:
             messages.error(request, 'Error saving form')
 

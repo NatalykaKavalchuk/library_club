@@ -32,7 +32,7 @@ All authors
 
                     <td>
                         {% for book in author.books.all %}
-                        <a href="/books/{{ book.slug }}">{{ book }}</a>
+                        <a href="/books/{{ book.slug }}">{{ book|title }}</a>
                         <br>
                         {% endfor %}
                     </td>

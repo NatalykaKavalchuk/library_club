@@ -26,20 +26,24 @@ SECRET_KEY = "django-insecure-*^fqpq*u1ql9&67v#@5_qiecct#v02t-cknv9x8knk9!mvj71i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+DEFAULT_CHARSET = 'utf-8'
+
 ALLOWED_HOSTS = []
 
 # Application definition
 
 INSTALLED_APPS = [
-    # my apps
+    # ___my apps____
     "library_catalog",
 
-    # third party applications
+    # ___third party applications___
     "crispy_forms",
     "crispy_bootstrap5",
     "bootstrap5",
+    "rest_framework",
+    "drf_spectacular",
 
-    # default app
+    # ___default app___
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -48,6 +52,24 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ]
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Library Club API',
+    'DESCRIPTION': 'This is an official API documentation for web service with authors and books',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': True,
+
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -86,6 +108,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
+
     }
 }
 

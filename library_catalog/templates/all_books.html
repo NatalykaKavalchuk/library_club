@@ -29,7 +29,7 @@ All books
                 {% for book in all_books %}
                 <tr>
                     <td style="width: 3%">{{ book.id }}</td>
-                    <td>{{ book.title }}</td>
+                    <td>{{ book.title|title }}</td>
                     <td>
                         {% for author in book.author.all %}
                         <a href="/authors/{{ author.slug }}">{{ author }}</a>
