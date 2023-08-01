@@ -28,6 +28,7 @@ The main features that have currently been implemented are:
 ![Screenshot of API ](https://github.com/NatalykaKavalchuk/library_club/blob/master/media/pictures/api.jpg?raw=true) 
 
 6. The ability to add posters is implemented only through the base django application
+7. CI/CD pipeline is configured based on GitHub Actions
 
 ## *Quick Start:*
 
