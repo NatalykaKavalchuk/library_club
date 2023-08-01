@@ -22,7 +22,7 @@ The main features that have currently been implemented are:
  
 4. The **"Authorss"** section displays a table of all authors from the database. You can get detailed information about each author, including all his books. Added the ability to add an author to the database using  **"Add author"**.
 
-![Screenshot of API ](https://github.com/NatalykaKavalchuk/library_club/blob/master/media/pictures/books.jpg?raw=true) 
+![Screenshot of API ](https://github.com/NatalykaKavalchuk/library_club/blob/master/media/pictures/authors.jpg?raw=true) 
 
 5. The API allows you to add, delete, make partial or complete changes to existing data about the book/author. 
 
