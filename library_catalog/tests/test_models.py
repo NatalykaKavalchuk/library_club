@@ -26,7 +26,6 @@ class AuthorModelTest(TestCase):
         self.assertEquals(expected_object_name, str(author))
 
 
-
 class BookModelTest(TestCase):
     # the test allows you to fill in the fields of the model 'Book' using the library model_bakery
     def test_book_model(self):
