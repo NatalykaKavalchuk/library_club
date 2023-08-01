@@ -6,7 +6,8 @@ A compact web service that allows to work with 'authors' and 'books'.
 
 Technologies used:
 - Django: user-friendly interface of project;
-- Django Rest Framework: allows to easily create a REST API of project.
+- Django Rest Framework (DRF): allows to easily create a REST API of project;
+- Swagger: allows anyone to visualize and interact with the API’s resources.  
 
 The main features that have currently been implemented are:
 
@@ -27,8 +28,8 @@ The main features that have currently been implemented are:
 
 ![Screenshot of API ](https://github.com/NatalykaKavalchuk/library_club/blob/master/media/pictures/api.jpg?raw=true) 
 
-6. The ability to add posters is implemented only through the base django application
-7. CI/CD pipeline is configured based on GitHub Actions
+6. The ability to add posters for books and photos for authors is implemented only through the base django application.
+7. CI/CD pipeline is configured based on GitHub Actions.
 
 ## *Quick Start:*
 
@@ -48,6 +49,6 @@ $ python manage.py runserver
 ```
 
 4. Open a browser and go to http://localhost:8000/
-5. For work with DRF go to http://127.0.0.1:8000/api/swagger-ui/
+5. You can also work with the app using swagger-ui http://127.0.0.1:8000/api/swagger-ui/
 
 
